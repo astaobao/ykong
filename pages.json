@@ -1,0 +1,107 @@
+{
+	"pages": [
+		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/tabbar/tabbar-1/tabbar-1",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/tabbar/tabbar-2/tabbar-2",
+			"style": {
+				"navigationBarTitleText": "答案搜索"
+			}
+		},
+		{
+			"path": "pages/tabbar/tabbar-3/tabbar-3",
+			"style": {}
+		},
+		{
+			"path": "pages/tabbar/tabbar-4/tabbar-4",
+			"style": {
+				"navigationBarTitleText": "视频搜索"
+			}
+		},
+		{
+			"path": "pages/tabbar/tabbar-5/tabbar-5",
+			"style": {
+				"navigationBarTitleText": "个人展示"
+			}
+		},
+		{
+			"path": "pages/tabbar-3-detial/tabbar-3-release/tabbar-3-release",
+			"style": {}
+		},
+		{
+			"path": "pages/tabbar-3-detial/tabbar-3-video/tabbar-3-video",
+			"style": {}
+		},
+		{
+			"path": "pages/tabbar-3-detial/tabbar-3-qa/tabbar-3-qa",
+			"style": {}
+		}
+	    ,{
+            "path" : "pages/tabbar/tabbar-2/tabbar-2-massage",
+            "style" : {
+				"navigationBarTitleText": "查询结果"
+			}
+        }
+        ,{
+            "path" : "pages/tabbar/tabbar-4/tabbar-4-list/tabbar-4-list",
+            "style" : {
+				"navigationBarTitleText": "视频搜索结果"
+			}
+        }
+        ,{
+            "path" : "pages/tabbar/tabbar-4/tabbar-4-play",
+            "style" : {
+			// "transparentTitle" : "always" //设置不要标题
+			}
+        }
+        ,{
+            "path" : "pages/tabbar/tabbar-4/tabbar-4-list/tabbar-4-list-select",
+            "style" : {
+				
+			}
+        }
+    ],
+	"globalStyle": {
+			
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "夜空划过流星",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"borderStyle": "black",
+		"backgroundColor": "#333",
+		"color": "#8F8F94",
+		"selectedColor": "#f33e54",
+		"list": [{
+				"pagePath": "pages/tabbar/tabbar-1/tabbar-1",
+				"iconPath": "static/img/tabbar/home.png",
+				"selectedIconPath": "static/img/tabbar/homeactive.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/tabbar/tabbar-2/tabbar-2",
+				"iconPath": "static/img/tabbar/search.png",
+				"selectedIconPath": "static/img/tabbar/searchactive.png",
+				"text": "答案搜索"
+			},
+			{
+				"pagePath": "pages/tabbar/tabbar-4/tabbar-4",
+				"iconPath": "static/img/tabbar/play.png",
+				"selectedIconPath": "static/img/tabbar/playactive.png",
+				"text": "视频"
+			},
+			{
+				"pagePath": "pages/tabbar/tabbar-5/tabbar-5",
+				"iconPath": "static/img/tabbar/me.png",
+				"selectedIconPath": "static/img/tabbar/meactive.png",
+				"text": "我"
+			}
+		]
+	}
+}
