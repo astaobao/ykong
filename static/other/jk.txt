@@ -1,0 +1,8 @@
+可以用的接口:
+https://www.lookpian.com/js/dplay.html?v=
+http://jx.aeidu.cn/index.php?url=
+
+
+
+还可以但有广告的接口
+http://jx.bwcxy.com/?v=   //还有弹幕,和记录播放位置,但缺点就是有广告

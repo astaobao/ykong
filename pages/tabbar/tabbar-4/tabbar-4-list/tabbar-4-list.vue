@@ -3,7 +3,7 @@
 		<ul>
 			<li v-for="(item, index)  in list" :key="index">
 
-				<div class="single-member effect-2" @click="byUrlPlay(item.playUrl,item.name)">
+				<div class="single-member effect-2" @click="byUrlPlay(item.playUrl,item.name,index)">
 					<div class="member-image">
 						<img alt="" v-lazy.container="item.imageUrl">
 					</div>
@@ -25,6 +25,10 @@
 	import {
 		Toast
 	} from 'mint-ui';
+	import {
+		Indicator
+	} from 'mint-ui';
+	
 	export default {
 		data() {
 			return {
@@ -46,11 +50,14 @@
 					url
 				});
 			},
-			byUrlPlay(playUrl, name) {
+			byUrlPlay(playUrl, name,index) {
 				if (playUrl == '') {
 					Toast('播放失败,内容为空');
 					return;
 				}
+		     
+				Indicator.open(); //加载提示框
+				
 				let playList = [];
 
 				function play(playUrl, label) {
@@ -61,64 +68,48 @@
 				//发送get请求,向https://www.lookpian.com搜索数据
 				this.$axios.get("https://www.lookpian.com" + playUrl)
 					.then(resp => {
+						Indicator.close(); //关闭加载提示
 						let $ = this.$cheerio.load(resp.data, {
 							_useHtmlParser2: true
 						}); //将获取的整个页面,这里的$就相当于整个页面
+						
+						this.list[index].focus = $('div.plot').text().trim(); //获取简介
+						
 						let hrefLis = $('ul.playlistlink-1 li'); //和jquery里的选择器是一样的
 						for (let i = 0; i < hrefLis.length; i++) {
 							playList.push(new play(hrefLis.eq(i).find("a").attr("href"), hrefLis.eq(i).find("a").text()))
 						}
 						sessionStorage.setItem("tabbar-4-name", name); //储存电影名字
-						this.getPlayList(playList); //将抓取的数据,向下传递
+						this.getPlayList(playList,index); //将抓取的数据,向下传递
 
 					}).catch(err => {
-						console.log(err)
+						Indicator.close(); //关闭加载提示
 						Toast('请求失败');
 
 					});
 
 			},
-			getPlayList(playList) {
-
+			getPlayList(playList,index) {
+				
+				sessionStorage.setItem("tabbar-4-video-msg-select", JSON.stringify(this.list[index]));  //储存
+           
 				if (playList.length == 0) {
 					Toast('请求失败');
 					return;
-				} else if (playList.length == 1) { //数组长度为1,应该是电影,直接跳转
-					this.dialogPlay(playList[0].playUrl);
-					return;
-				} else { //电视剧待确定
-					sessionStorage.setItem("tabbar-4-playList", JSON.stringify(playList));
-					
+				}else { //选择页面
+					sessionStorage.setItem("tabbar-4-playList", JSON.stringify(playList));					
 					this.goToPage('/pages/tabbar/tabbar-4/tabbar-4-list/tabbar-4-list-select')
 				}
 
-			},
-			dialogPlay(playUrl) {
-				//playUrl: '/dalu/sanshengsanshizhenshangshu/play-0-0.html'
-
-				//发送get请求,向https://www.lookpian.com搜索数据
-				this.$axios.get("https://www.lookpian.com" + playUrl).then(resp => {
-					let $ = this.$cheerio.load(resp.data, {
-						_useHtmlParser2: true
-					}); //将获取的整个页面,这里的$就相当于整个页面
-					let iframeSrc = $('.info.clearfix').find('iframe').attr('src');
-
-					iframeSrc = 'https://www.lookpian.com' + iframeSrc;
-
-
-					sessionStorage.setItem("tabbar-4-iframeSrc", iframeSrc);
-					this.goToPage('/pages/tabbar/tabbar-4/tabbar-4-play')
-
-				}).catch(err => {
-					console.log("出现错误");
-				});
-
-
 			}
+		
 		},
 		created() { //此时data已经初始化完成
 			//JSON.stringify()将对象a变成了字符串c，那么我就用JSON.parse()将字符串c还原成对象a。
 			this.list = JSON.parse(sessionStorage.getItem("videosList"));
+		},
+		beforeDestroy() {
+			Indicator.close(); //关闭加载提示
 		}
 	}
 </script>

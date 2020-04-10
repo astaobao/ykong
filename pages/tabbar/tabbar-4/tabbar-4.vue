@@ -118,6 +118,9 @@
 
 			}
 
+		},
+		beforeDestroy() {
+			Indicator.close(); //关闭加载提示
 		}
 	}
 </script>

@@ -4,13 +4,15 @@ import axios from 'axios' // 引入axios,发送请求
 import cheerio from 'cheerio' // 引入cheerio,爬虫必备 
 import qs from 'qs'
 
-
 // 引入mint-ui的全部组件 
 import Mint from 'mint-ui';
 // import 'mint-ui/lib/style.css';  //改为在APP.vue里已cdn的形式引用
 Vue.use(Mint);
 
-import phone from 'common/js/quit.js'  //监听手机的返回键
+// import phone from './static/common/js/quit.js'  //监听手机的返回键
+import  './static/common/js/quit.js'  //监听手机的返回键
+
+
 
 Vue.config.productionTip = false
 
@@ -24,5 +26,6 @@ App.mpType = 'app'
 
 const app = new Vue({
 	...App
+	
 })
 app.$mount()
