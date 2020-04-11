@@ -10,10 +10,13 @@ document.addEventListener('plusready', function (a) {
     plus.key.addEventListener('backbutton', function () {
       //获取地址栏目中的url
       var url = location.hash.split('/')[1]
+      var url2 = location.hash.split('/')[2]
       var url3 = location.hash.split('/')[3]
       var url4 = location.hash.split('/')[4]
       
-      if (url3 == url4|| url==='') {//判断是首页的时候点击二次退出app
+	  
+      if ((url3 == url4&&url2=='tabbar')|| url==='') {//判断是首页的时候点击二次退出app
+	
 	  /* 
 	  
         if (new Date().getTime() - first < 3000) {

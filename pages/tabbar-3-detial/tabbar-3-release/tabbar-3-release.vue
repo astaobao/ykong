@@ -1,6 +1,10 @@
 <template>
 	<view class="content">
-		页面 - 发图文
+		<p>待开发区域</p>
+	    <br/>
+		<p style="margin-bottom:20px;">等待一个好的idea....</p>
+		
+		<img style="width:80%" src="../../../static/img/404.jpg" >
 	</view>
 </template>
 
@@ -23,7 +27,12 @@
 <style>
 	.content {
 		text-align: center;
-		height: 400upx;
-		margin-top: 200upx;
+
+		margin-top: 10%;
 	}
+/* 	.imgCalss{
+		margin:20px;
+		width:80%;
+		height:80%;
+		} */
 </style>
