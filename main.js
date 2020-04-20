@@ -14,12 +14,15 @@ import  './static/common/js/quit.js'  //监听手机的返回键
 
 
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+
+
+//跨域访问需要发送cookie时一定要加,同时后端也必须设置允许跨域的
+axios.defaults.withCredentials =true;
 
 Vue.prototype.$axios = axios; //Vue.prototype 全局变量,即每个this都可以访问 ,在定义全局变量时很容易和组件定义的值冲突，所有一般习惯在值前面加$
 Vue.prototype.$cheerio = cheerio;
 Vue.prototype.$qs = qs;
-
 
 
 App.mpType = 'app'

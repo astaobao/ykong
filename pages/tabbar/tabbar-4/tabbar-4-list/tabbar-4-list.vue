@@ -1,5 +1,7 @@
 <template>
+	
 	<view class="main">
+		<h1></h1>
 		<ul>
 			<li v-for="(item, index)  in list" :key="index">
 
@@ -66,7 +68,7 @@
 				} //声明一个对象
 
 				//发送get请求,向https://www.lookpian.com搜索数据
-				this.$axios.get("https://www.lookpian.com" + playUrl)
+				this.$axios.get("http://www.goodpian.com" + playUrl)
 					.then(resp => {
 						Indicator.close(); //关闭加载提示
 						let $ = this.$cheerio.load(resp.data, {

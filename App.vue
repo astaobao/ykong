@@ -22,7 +22,11 @@
 </script>
 
 <style>
-	@import "./static/common/css/mint-ui.css";
 	/* app不支持js引入mint-ui.css */
+	@import "./static/common/css/mint-ui.css";
+	@import "./static/common/css/icon.css";
+	@import "./static/common/css/main.css";
+	
+	
 
 </style>

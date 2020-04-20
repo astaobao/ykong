@@ -71,7 +71,7 @@
 				Indicator.open(); //加载提示框
 				let videosList = [];
 				//发送post请求,向https://www.lookpian.com搜索数据
-				this.$axios.post("https://www.lookpian.com/search.php",
+				this.$axios.post("http://www.goodpian.com/search.php",
 					this.$qs.stringify({
 						'searchword': this.searchword
 					}), {
@@ -189,11 +189,11 @@
 	}
 
 	input {
-		width: 75%;
-		height: 42px;
+		width: 100%;
+		height: 46px;
 		/* margin-left: 8px; */
 		padding-left: 13px;
-		padding-right: 25px;
+		padding-right: 80px;
 	}
 
 	button {

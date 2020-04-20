@@ -51,7 +51,7 @@
 				//playUrl: '/dalu/sanshengsanshizhenshangshu/play-0-0.html'
 	            Indicator.open(); //加载提示框
 				//发送get请求,向https://www.lookpian.com搜索数据
-				this.$axios.get("https://www.lookpian.com" + playUrl).then(resp => {
+				this.$axios.get("http://www.goodpian.com" + playUrl).then(resp => {
 					
 					Indicator.close(); //关闭加载提示
 					 
@@ -60,7 +60,7 @@
 					}); //将获取的整个页面,这里的$就相当于整个页面
 					let iframeSrc = $('.info.clearfix').find('iframe').attr('src');
 	                
-					iframeSrc = 'https://www.lookpian.com' + iframeSrc;
+					iframeSrc = 'http://www.goodpian.com' + iframeSrc;
 
 
 					let list = JSON.parse(sessionStorage.getItem("tabbar-4-video-msg-select"))
@@ -73,19 +73,19 @@
 					if (videoPlayUrl == '') { //跳转到老页面
 						sessionStorage.setItem("tabbar-4-iframeSrc", iframeSrc);
 						this.goToPage('/pages/tabbar/tabbar-4/tabbar-4-play')
+					
 					} else {
-
-
 						list.playUrl = videoPlayUrl; //将处理后的m3u8真实路径传下去
 						localStorage.setItem("tabbar-4-video-msg", JSON.stringify(list)); //储存视频信息
 						this.goToHybrid(); //跳转到外部路径  hybrid-->html
 
-					}
+					} 
 
 
 				}).catch(err => {
 					Indicator.close(); //关闭加载提示
 					console.log("出现错误");
+					
 				});
 
 
